@@ -117,7 +117,7 @@ to `ghcr.io/jic-dtool/dserver-minimal` by `publish-container-image.yml`.
 - Runtime stage (`python:3.12-slim-bookworm`) apt-installs nginx + PostgreSQL +
   MongoDB 8.0 + supervisor + git, then `pip install`s `requirements.txt`: the
   dserver **core and plugins plus the dtool stack from their GitHub default
-  branches** (`jic-dtool/*` on `master` or `main`; latest dev
+  branches** (`jic-dtool/*` on `main`; latest dev
   state, intentionally unpinned) and a Flask-stack
   compatibility cap (`Flask==2.3.3`/`Werkzeug==2.3.8`/`marshmallow<4` — without
   it the resolver pulls marshmallow 4 / Werkzeug 3 and drags `flask-smorest`
