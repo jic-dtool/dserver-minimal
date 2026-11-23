@@ -12,9 +12,9 @@ on:
 
 jobs:
   publish:
-    uses: livMatS/dserver-minimal/.github/workflows/generic-container-image-publication.yml@main
+    uses: jic-dtool/dserver-minimal/.github/workflows/generic-container-image-publication.yml@main
     with:
-      image: ghcr.io/livmats/dserver-minimal
+      image: ghcr.io/jic-dtool/dserver-minimal
       docker_file: ./docker/single-container/Dockerfile 
       docker_context: ./docker/single-container 
       registry: ghcr.io

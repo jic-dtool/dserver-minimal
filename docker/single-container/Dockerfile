@@ -5,8 +5,8 @@
 # in one image, fronted by nginx on port 8888. Demo/evaluation artifact only:
 # embedded databases, disabled auth, throwaway credentials.
 #
-#   docker build -t livmats/dserver-minimal docker/single-container
-#   docker run -v $(pwd)/sample-datasets:/tmp/data:ro -p 8888:8888 livmats/dserver-minimal
+#   docker build -t jic-dtool/dserver-minimal docker/single-container
+#   docker run -v $(pwd)/sample-datasets:/tmp/data:ro -p 8888:8888 jic-dtool/dserver-minimal
 # =============================================================================
 
 # -----------------------------------------------------------------------------
@@ -29,7 +29,7 @@ RUN apt-get update \
 
 # Build the JS client library the webapp depends on.
 RUN git clone --depth 1 --branch ${CLIENT_JS_REF} \
-        https://github.com/livMatS/dserver-client-js.git /dserver-client-js
+        https://github.com/jic-dtool/dserver-client-js.git /dserver-client-js
 WORKDIR /dserver-client-js
 RUN npm install && npm run build
 
