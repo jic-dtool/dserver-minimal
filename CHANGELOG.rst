@@ -46,6 +46,25 @@ Changed
   3.12 (was end-of-life 3.8); least-privilege ``permissions`` blocks added; the
   JOSS ``paper`` workflow only runs on ``paper/`` changes; Dependabot now also
   tracks Docker base images
+- Moved repository from ``livMatS`` to ``jic-dtool``: updated GitHub URLs, the
+  ``ghcr.io/jic-dtool/dserver-minimal`` container image name, the reusable
+  workflow reference and the PyPI trusted-publisher notes
+- Compose web app image (``docker/compose/dtool_lookup_webapp``) now builds
+  ``jic-dtool/dtool-lookup-webapp`` from ``master`` together with
+  ``dserver-client-js`` and disables authentication via
+  ``VUE_APP_AUTH_ENABLED=false`` instead of using the obsolete
+  ``2025-03-13-no-authentication`` branch
+
+Fixed
+^^^^^
+
+- README and docs links for the search and retrieve plugins pointed at the
+  wrong repositories
+
+Removed
+^^^^^^^
+
+- JOSS paper draft (``paper/``) and its ``paper`` workflow
 
 [0.3.0]
 -------

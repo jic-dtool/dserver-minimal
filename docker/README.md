@@ -80,11 +80,11 @@ disables authentication, and ships throwaway credentials. Do not deploy it as-is
 
 Build with
 
-    docker build -t livmats/dserver-minimal docker/single-container
+    docker build -t jic-dtool/dserver-minimal docker/single-container
 
 and run with
 
-    docker run -v $(pwd)/sample-datasets:/tmp/data:ro -p 8888:8888 livmats/dserver-minimal
+    docker run -v $(pwd)/sample-datasets:/tmp/data:ro -p 8888:8888 jic-dtool/dserver-minimal
 
 to index the datasets in the local folder `$(pwd)/sample-datasets`. Then open:
 
@@ -101,5 +101,5 @@ reproducible builds with
     docker build \
       --build-arg WEBAPP_REF=<commit-sha> \
       --build-arg CLIENT_JS_REF=<commit-sha> \
-      -t livmats/dserver-minimal docker/single-container
+      -t jic-dtool/dserver-minimal docker/single-container
  

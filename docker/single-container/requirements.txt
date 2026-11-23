@@ -5,9 +5,9 @@
 dservercore @ git+https://github.com/jic-dtool/dservercore.git
 dserver-search-plugin-mongo @ git+https://github.com/jic-dtool/dserver-search-plugin-mongo.git
 dserver-retrieve-plugin-mongo @ git+https://github.com/jic-dtool/dserver-retrieve-plugin-mongo.git
-dserver-direct-mongo-plugin @ git+https://github.com/livMatS/dserver-direct-mongo-plugin.git
-dserver-dependency-graph-plugin @ git+https://github.com/livMatS/dserver-dependency-graph-plugin.git
-dserver-notification-plugin @ git+https://github.com/livMatS/dserver-notification-plugin.git
+dserver-direct-mongo-plugin @ git+https://github.com/jic-dtool/dserver-direct-mongo-plugin.git
+dserver-dependency-graph-plugin @ git+https://github.com/jic-dtool/dserver-dependency-graph-plugin.git
+dserver-notification-plugin @ git+https://github.com/jic-dtool/dserver-notification-plugin.git
 
 # Flask ecosystem compatibility caps. dservercore leaves Flask/Werkzeug/marshmallow
 # unbounded; 2026-era latest Werkzeug 3 + marshmallow 4 break the resolution and
@@ -24,7 +24,7 @@ dtool-cli @ git+https://github.com/jic-dtool/dtool-cli.git
 dtool-info @ git+https://github.com/jic-dtool/dtool-info.git
 dtool-create @ git+https://github.com/jic-dtool/dtool-create.git
 dtool-s3 @ git+https://github.com/jic-dtool/dtool-s3.git
-dtool-lookup-api @ git+https://github.com/livMatS/dtool-lookup-api.git
+dtool-lookup-api @ git+https://github.com/jic-dtool/dtool-lookup-api.git
 dtool-lookup-client @ git+https://github.com/jic-dtool/dtool-lookup-client.git
 
 # Runtime: WSGI server + Postgres driver (binary wheel → no gcc needed).

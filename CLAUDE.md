@@ -78,8 +78,8 @@ bash devel/create_test_data.sh   # builds two dtool datasets and pushes them to 
 - Single all-in-one container (nginx + Postgres + Mongo + webapp + dserver via
   `supervisord`):
   ```bash
-  docker build -t livmats/dserver-minimal docker/single-container
-  docker run -v $(pwd)/sample-datasets:/tmp/data:ro -p 8888:8888 livmats/dserver-minimal
+  docker build -t jic-dtool/dserver-minimal docker/single-container
+  docker run -v $(pwd)/sample-datasets:/tmp/data:ro -p 8888:8888 jic-dtool/dserver-minimal
   ```
   It indexes datasets found in the mounted `/tmp/data`; nginx serves the API
   under the `/lookup` prefix (`SCRIPT_NAME=/lookup`).
@@ -105,19 +105,19 @@ in the `.rst`.
 The "try dserver with one `docker run`" artifact — a whole stack (PostgreSQL +
 MongoDB + dserver API + Vue web GUI) inside **one** image fronted by nginx on
 port **8888**. Distinct from the multi-service `docker compose` setups; published
-to `ghcr.io/livmats/dserver-minimal` by `publish-container-image.yml`.
+to `ghcr.io/jic-dtool/dserver-minimal` by `publish-container-image.yml`.
 
 **Build (`Dockerfile`)** is **multi-stage**:
 - Stage `webapp-builder` (`node:20-bookworm-slim`) builds the web GUI. The GUI
   tracks `jic-dtool/dtool-lookup-webapp` (branch via `WEBAPP_REF`), which has a
-  `file:` dependency on `livMatS/dserver-client-js` (branch via `CLIENT_JS_REF`)
+  `file:` dependency on `jic-dtool/dserver-client-js` (branch via `CLIENT_JS_REF`)
   — so the client lib is built first, the `file:` path is rewritten, and
   `npm run build` produces a static `dist/`. Build-time config (`webapp.env`,
   incl. `VUE_APP_AUTH_ENABLED=false`) is baked into the bundle.
 - Runtime stage (`python:3.12-slim-bookworm`) apt-installs nginx + PostgreSQL +
   MongoDB 8.0 + supervisor + git, then `pip install`s `requirements.txt`: the
   dserver **core and plugins plus the dtool stack from their GitHub default
-  branches** (`jic-dtool/*` on `master`, `livMatS/*` on `main`; latest dev
+  branches** (`jic-dtool/*` on `main`; latest dev
   state, intentionally unpinned) and a Flask-stack
   compatibility cap (`Flask==2.3.3`/`Werkzeug==2.3.8`/`marshmallow<4` — without
   it the resolver pulls marshmallow 4 / Werkzeug 3 and drags `flask-smorest`
@@ -154,7 +154,7 @@ via `--build-arg WEBAPP_REF=<sha>` / `CLIENT_JS_REF=<sha>`.
   there are no unit tests in CI.
 - **PyPI publishing uses Trusted Publishing (OIDC)** — no API tokens. It needs a
   one-time trusted-publisher setup on each index (project → Publishing): owner
-  `livMatS`, repo `dserver-minimal`, workflow `publish-python-package.yml`, and
+  `jic-dtool`, repo `dserver-minimal`, workflow `publish-python-package.yml`, and
   the GitHub **environment name** the publish job declares — `pypi` on PyPI,
   `testpypi` on TestPyPI. The `publish-pypi` / `publish-testpypi` jobs set those
   `environment:` names; without the matching trusted publisher, releases fail.
